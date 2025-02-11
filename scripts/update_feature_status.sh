@@ -10,7 +10,7 @@ set -e # Exit on error
 
 # Load environment variables from .env file
 if [ -f "$(dirname "$0")/../.env" ]; then
-    export $(cat "$(dirname "$0")/../.env" | grep -E "^(GITHUB_TOKEN|GITHUB_REPOSITORY)=" | xargs)
+    export $(cat "$(dirname "$0")/../.env" | grep -E "^(GITHUB_TOKEN|GITHUB_REPOSITORY|GH_PROJECT_NUMBER)=" | xargs)
 fi
 
 # Validate required environment variables
@@ -21,6 +21,11 @@ fi
 
 if [ -z "$GITHUB_REPOSITORY" ]; then
     echo "Error: GITHUB_REPOSITORY environment variable is not set"
+    exit 1
+fi
+
+if [ -z "$GH_PROJECT_NUMBER" ]; then
+    echo "Error: GH_PROJECT_NUMBER environment variable is not set"
     exit 1
 fi
 

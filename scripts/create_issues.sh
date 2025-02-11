@@ -17,7 +17,7 @@ if [ -f "$(dirname "$0")/../.env" ]; then
     
     # Debug output
     echo "GITHUB_REPOSITORY: $GITHUB_REPOSITORY"
-    echo "GITHUB_PROJECT_NUMBER: $GITHUB_PROJECT_NUMBER"
+    echo "GH_PROJECT_NUMBER: $GH_PROJECT_NUMBER"
     echo "GITHUB_TOKEN length: ${#GITHUB_TOKEN}"
 fi
 
@@ -32,8 +32,8 @@ if [ -z "$GITHUB_REPOSITORY" ]; then
     exit 1
 fi
 
-if [ -z "$GITHUB_PROJECT_NUMBER" ]; then
-    echo "Error: GITHUB_PROJECT_NUMBER environment variable is not set"
+if [ -z "$GH_PROJECT_NUMBER" ]; then
+    echo "Error: GH_PROJECT_NUMBER environment variable is not set"
     exit 1
 fi
 
@@ -90,7 +90,7 @@ add_issue_to_project() {
     
     # Get project ID using GraphQL
     local project_query='{
-        "query": "query { viewer { projectV2(number: '"$GITHUB_PROJECT_NUMBER"') { id } } }"
+        "query": "query { viewer { projectV2(number: '"$GH_PROJECT_NUMBER"') { id } } }"
     }'
     
     local project_response=$(curl -s -X POST -H "Authorization: Bearer $GITHUB_TOKEN" \
@@ -104,7 +104,7 @@ add_issue_to_project() {
     local project_id=$(echo "$project_response" | jq -r '.data.viewer.projectV2.id')
     
     if [ -z "$project_id" ] || [ "$project_id" = "null" ]; then
-        echo "Error: Project number $GITHUB_PROJECT_NUMBER not found"
+        echo "Error: Project number $GH_PROJECT_NUMBER not found"
         return 1
     fi
     

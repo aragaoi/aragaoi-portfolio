@@ -22,7 +22,7 @@ jobs:
         id: update_status
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
+          GH_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
         run: |
           # Use issue number as feature ID
           ISSUE_NUMBER="${{ github.event.issue.number }}"

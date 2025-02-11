@@ -5,6 +5,7 @@ on:
     paths:
       - "shared-modules/*/README.md"
       - "README.md"
+      - "scripts/*"
   workflow_dispatch:
 
 jobs:
@@ -27,7 +28,7 @@ jobs:
       - name: Create GitHub issues
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          GITHUB_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
+          GH_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
         run: ./scripts/create_issues.sh
 
       - name: Sync project status
