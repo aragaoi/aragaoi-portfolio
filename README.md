@@ -43,7 +43,7 @@ portfolio/
 
 | Status           | Project                   | Description                                                                                              | Repository                                                                             |
 | ---------------- | ------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| [█▱▱▱▱▱▱▱▱▱] 10% | Feature Toggle Management | Manage feature activation/deactivation with granular control over different user groups and environments | [feature-toggle-management](https://github.com/yourusername/feature-toggle-management) |
+| [██▱▱▱▱▱▱▱▱] 10% | Feature Toggle Management | Manage feature activation/deactivation with granular control over different user groups and environments | [feature-toggle-management](https://github.com/yourusername/feature-toggle-management) |
 | [▱▱▱▱▱▱▱▱▱▱] 0%  | Finance Tracker           | Monitor and analyze financial transactions, manage income, expenses and budgeting                        | [finance-tracker](https://github.com/yourusername/finance-tracker)                     |
 | [▱▱▱▱▱▱▱▱▱▱] 0%  | Notification System       | Real-time notifications across multiple channels                                                         | [notification-system](https://github.com/yourusername/notification-system)             |
 | [▱▱▱▱▱▱▱▱▱▱] 0%  | API Gateway               | Single entry point for multiple APIs with request routing, authentication and rate limiting              | [api-gateway](https://github.com/yourusername/api-gateway)                             |
