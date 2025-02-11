@@ -6,17 +6,17 @@ Handles user access management, ensuring that only authorized individuals can us
 
 High Priority:
 
-- [ ] User Authentication (Login/Logout) # id: auth_login
-- [ ] Role-Based Access Control (RBAC) # id: auth_rbac
+- [ ] User Authentication (Login/Logout)
+- [ ] Role-Based Access Control (RBAC)
 
 Medium Priority:
 
-- [ ] Session Management # id: auth_session
-- [ ] Multi-Factor Authentication (MFA) # id: auth_mfa
+- [ ] Session Management
+- [ ] Multi-Factor Authentication (MFA)
 
 Low Priority:
 
-- [ ] Password Recovery # id: auth_recovery
+- [ ] Password Recovery
 
 ## Architecture
 

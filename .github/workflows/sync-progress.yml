@@ -1,0 +1,47 @@
+name: Sync Progress
+
+on:
+  push:
+    paths:
+      - "shared-modules/*/README.md"
+      - "README.md"
+  workflow_dispatch:
+
+jobs:
+  sync-progress:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2 # To get previous commit for author check
+
+      - name: Make scripts executable
+        run: |
+          chmod +x scripts/sync_project_status.sh
+          chmod +x scripts/create_issues.sh
+          chmod +x scripts/sync_module_status.sh
+
+      - name: Sync module status
+        run: ./scripts/sync_module_status.sh
+
+      - name: Create GitHub issues
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
+        run: ./scripts/create_issues.sh
+
+      - name: Sync project status
+        run: ./scripts/sync_project_status.sh
+
+      - name: Commit changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git diff --quiet && git diff --staged --quiet || git commit -m "Sync progress status"
+
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

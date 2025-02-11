@@ -1,0 +1,75 @@
+name: Sync Issue Status
+
+on:
+  issues:
+    types: [closed, reopened]
+
+jobs:
+  sync-status:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 2 # To get previous commit for author check
+
+      - name: Make scripts executable
+        run: |
+          chmod +x scripts/update_feature_status.sh
+          chmod +x scripts/sync_module_status.sh
+          chmod +x scripts/sync_project_status.sh
+
+      - name: Update feature status
+        id: update_status
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PROJECT_NUMBER: ${{ secrets.GH_PROJECT_NUMBER }}
+        run: |
+          # Use issue number as feature ID
+          ISSUE_NUMBER="${{ github.event.issue.number }}"
+
+          if [ -z "$ISSUE_NUMBER" ]; then
+            echo "Error: Issue number is missing"
+            exit 1
+          fi
+
+          if ! ./scripts/update_feature_status.sh "${{ github.event.issue.title }}" "${{ github.event.issue.state }}" "$ISSUE_NUMBER"; then
+            echo "Error: Failed to update feature status"
+            exit 1
+          fi
+
+      - name: Sync module status
+        if: success()
+        run: |
+          if ! ./scripts/sync_module_status.sh; then
+            echo "Error: Failed to sync module status"
+            exit 1
+          fi
+
+      - name: Sync project status
+        if: success()
+        run: |
+          if ! ./scripts/sync_project_status.sh; then
+            echo "Error: Failed to sync project status"
+            exit 1
+          fi
+
+      - name: Commit changes
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          if ! git diff --quiet && ! git diff --staged --quiet; then
+            git commit -m "Update feature status from issue #${{ github.event.issue.number }}"
+            echo "changes_made=true" >> $GITHUB_ENV
+          else
+            echo "No changes to commit"
+            echo "changes_made=false" >> $GITHUB_ENV
+          fi
+
+      - name: Push changes
+        if: success() && env.changes_made == 'true'
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}

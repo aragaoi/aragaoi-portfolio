@@ -6,17 +6,17 @@ Processes and evaluates business rules, allowing for the definition and executio
 
 High Priority:
 
-- [ ] Custom Rule Definition # id: rule_definition
-- [ ] Real-Time Rule Execution # id: rule_execution
+- [ ] Custom Rule Definition
+- [ ] Real-Time Rule Execution
 
 Medium Priority:
 
-- [ ] Rule Versioning # id: rule_versions
-- [ ] Rule Validation # id: rule_validation
+- [ ] Rule Versioning
+- [ ] Rule Validation
 
 Low Priority:
 
-- [ ] Execution Auditing # id: rule_audit
+- [ ] Execution Auditing
 
 ## Architecture
 

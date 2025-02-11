@@ -6,17 +6,17 @@ Monitors cloud resource usage, calculates estimated costs, and suggests optimiza
 
 High Priority:
 
-- [ ] Real-Time Cost Monitoring # id: cost_monitor
-- [ ] Budget Overrun Alerts # id: cost_alerts
+- [ ] Real-Time Cost Monitoring
+- [ ] Budget Overrun Alerts
 
 Medium Priority:
 
-- [ ] Cost Optimization Recommendations # id: cost_optimize
-- [ ] Spending Trend Analysis # id: cost_trends
+- [ ] Cost Optimization Recommendations
+- [ ] Spending Trend Analysis
 
 Low Priority:
 
-- [ ] Cost Scenario Simulation # id: cost_simulate
+- [ ] Cost Scenario Simulation
 
 ## Architecture
 

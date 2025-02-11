@@ -6,17 +6,17 @@ Controls the dynamic activation of system functionalities, enabling or disabling
 
 High Priority:
 
-- [ ] Enable/Disable Features # id: toggle_enable
-- [ ] User Segmentation # id: toggle_segments
+- [ ] Enable/Disable Features
+- [ ] User Segmentation
 
 Medium Priority:
 
-- [ ] Release Management # id: toggle_releases
-- [ ] Feature Usage Analytics # id: toggle_analytics
+- [ ] Release Management
+- [ ] Feature Usage Analytics
 
 Low Priority:
 
-- [ ] CI/CD Integration # id: toggle_cicd
+- [ ] CI/CD Integration
 
 ## Architecture
 

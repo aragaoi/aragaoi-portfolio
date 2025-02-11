@@ -6,17 +6,17 @@ Generates reports and analytical dashboards, providing insights into system data
 
 High Priority:
 
-- [ ] Custom Report Generation # id: report_custom
-- [ ] Real-Time Dashboards # id: report_dashboards
+- [ ] Custom Report Generation
+- [ ] Real-Time Dashboards
 
 Medium Priority:
 
-- [ ] Data Export (CSV, PDF) # id: report_export
-- [ ] Report Scheduling # id: report_schedule
+- [ ] Data Export (CSV, PDF)
+- [ ] Report Scheduling
 
 Low Priority:
 
-- [ ] Predictive Analytics # id: report_predict
+- [ ] Predictive Analytics
 
 ## Architecture
 

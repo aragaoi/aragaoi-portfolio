@@ -6,17 +6,17 @@ Manages the sending of notifications to users across multiple channels, ensuring
 
 High Priority:
 
-- [ ] Real-Time Notifications # id: notif_realtime
-- [ ] Multi-Channel Support (Email, SMS, Push) # id: notif_channels
+- [ ] Real-Time Notifications
+- [ ] Multi-Channel Support (Email, SMS, Push)
 
 Medium Priority:
 
-- [ ] User Preference Management # id: notif_preferences
-- [ ] Notification History # id: notif_history
+- [ ] User Preference Management
+- [ ] Notification History
 
 Low Priority:
 
-- [ ] Scheduled Notifications # id: notif_scheduled
+- [ ] Scheduled Notifications
 
 ## Architecture
 
